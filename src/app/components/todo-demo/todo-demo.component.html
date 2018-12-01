@@ -1,0 +1,24 @@
+<p>
+   TODOLIST
+</p>
+
+<input type="text"  [(ngModel)]="inputValue" (keyup)="keyUp($event)">
+
+<h5>正在进行中</h5>
+  <ul>
+    <li *ngFor='let item of listArr;let key=index' [hidden]="item.status == 2">
+       <button (click)="changeData(key,2)">改变数据</button>{{item.status}}------{{item.name}} ------  {{key}}<button (click)="deleteData(key)">删除</button>
+    </li>
+  </ul>
+
+<h5>已经完成时</h5>
+<ul>
+  <li *ngFor='let item of listArr;let key=index' [hidden]="item.status == 1">
+    <button (click)="changeData(key,1)">改变数据</button>{{item.status}}------{{item.name}} ------  {{key}}<button (click)="deleteData(key)">删除</button>
+  </li>
+</ul>
+
+<button>增加</button>
+
+<button (click)="requestData()">  请求数据内容</button>
+
